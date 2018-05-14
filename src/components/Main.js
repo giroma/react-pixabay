@@ -5,7 +5,7 @@ class Main extends Component {
   render() {
     return (
       <div className="main">
-        main is here
+        <img src={this.props.current} alt=''></img>
       </div>
     );
   }
