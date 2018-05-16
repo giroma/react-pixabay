@@ -6,7 +6,7 @@ class Search extends Component {
 
     return (
       <div className="search-bar">
-        <input type="text" value={this.props.searchInput} onChange={this.props.changeSearchState} placeholder='trees'></input>
+        <input type="text"  onChange={this.props.changeSearchState} placeholder='trees'></input>
       </div>
     );
   }

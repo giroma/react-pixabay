@@ -10,19 +10,13 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      searchInput: '',
-      current: 'https://pixabay.com/get/ea36b90a21f2073ed1584d05fb1d4e9fea72e5d41eac104497f6c27baee9bcbf_1280.jpg',
+      current: 'https://pixabay.com/get/ea36b80d28f3063ed1584d05fb1d4e9fea72e5d41eac104497f6c579aee9b2b8_1280.jpg',
       searchResults: initialSearchData,
     }
   }
-  componentDidMount(){
-    // this.search(this.state.searchInput)
-    console.log('current:',this.state.current);
-    console.log('initial', initialSearchData);
-  }
 
   changeSearchState = (e) => {
-    this.setState({searchInput: e.target.value})
+    // this.setState({searchInput: e.target.value})
     this.search(e.target.value)
   }
 
@@ -35,7 +29,6 @@ class App extends Component {
           this.setState({current: data.hits[0].largeImageURL})
           this.setState({searchResults: data})
         }
-        console.log('search::', this.state.searchInput);
         console.log('changed to:',this.state.current)
       })
     })
@@ -50,7 +43,6 @@ class App extends Component {
     return (
       <div className="App">
         <Search changeSearchState={this.changeSearchState}
-                searchInput={this.state.searchInput}
         />
         <Main current={this.state.current}
         />
