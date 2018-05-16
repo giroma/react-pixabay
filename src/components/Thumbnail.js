@@ -5,12 +5,11 @@ class Thumbnail extends Component {
   render() {
     return (
       <div className="thumbnail">
-        {console.log('thunbs results:',this.props.searchResults)}
-        {
-          this.props.searchResults.hits.map((image, index) => {
-          return <img key={index} src={image.previewURL} alt='' onClick={(e) => {this.props.handleThumbClick(e, index)}} ></img>
-          })
-        }
+        {this.props.searchResults.hits.map((image, index) => {
+          return  <a href={image.pageURL} target="_blank">
+                    <img key={index}  src={image.previewURL} alt='' onMouseOver={(e) => {this.props.handleThumbHover(e, index)}} ></img>
+                  </a>
+          })}
       </div>
     );
   }

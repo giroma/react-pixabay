@@ -23,10 +23,11 @@ class App extends Component {
 
   changeSearchState = (e) => {
     this.setState({searchInput: e.target.value})
-    this.search(this.state.searchInput)
+    this.search(e.target.value)
   }
 
   search = (searchString) => {
+    console.log('search string', searchString);
     const url = `https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API}&q=${searchString}&image_type=photo`
     fetch(url).then(response => {
       response.json().then(data => {
@@ -40,11 +41,9 @@ class App extends Component {
     })
   }
 
-  handleThumbClick = (e, index) => {
+  handleThumbHover = (e, index) => {
     const largeURLofThumbnail = this.state.searchResults.hits[index].largeImageURL
     this.setState({current: largeURLofThumbnail})
-    console.log('EEEEE', e);
-    console.log('index', index);
   }
 
   render() {
@@ -56,7 +55,7 @@ class App extends Component {
         <Main current={this.state.current}
         />
         <Thumbnail  searchResults={this.state.searchResults}
-                    handleThumbClick={this.handleThumbClick}
+                    handleThumbHover={this.handleThumbHover}
         />
       </div>
     );
